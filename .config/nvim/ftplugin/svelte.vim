@@ -1,0 +1,1 @@
+/home/jln/.config/nvim/ftplugin/javascript.vim
