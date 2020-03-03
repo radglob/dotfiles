@@ -1,4 +1,4 @@
 function note
-	command vim $(date -I).md
+	command vim ~/notes/(date -I).md
 end
 
