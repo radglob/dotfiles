@@ -1,14 +1,15 @@
 call plug#begin()
 
+Plug 'MaxMEllon/vim-jsx-pretty'
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'arcticicestudio/nord-vim'
 Plug 'deoplete-plugins/deoplete-jedi'
 Plug 'elixir-lang/vim-elixir'
 Plug 'junegunn/fzf'
-Plug 'MaxMEllon/vim-jsx-pretty'
+Plug 'neomake/neomake'
 Plug 'pangloss/vim-javascript'
 Plug 'roxma/nvim-yarp'
 Plug 'sheerun/vim-polyglot'
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'slashmili/alchemist.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rails'
@@ -34,5 +35,14 @@ set number
 set background=dark
 colorscheme nord
 
+autocmd BufWritePost,BufEnter * Neomake
+
 " Use Powerline symbols in Airline.
 let g:airline_powerline_fonts = 1
+
+" ALE Linters
+let g:ale_linters = {
+\    'javascript': ['eslint'],
+\    'ruby': ['rubocop']
+\}
+
