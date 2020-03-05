@@ -32,6 +32,8 @@ set splitbelow
 
 syntax enable
 set number
+set expandtab
+set textwidth=80
 set background=dark
 colorscheme nord
 
