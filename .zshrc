@@ -68,7 +68,7 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(git rails asdf)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -98,5 +98,7 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-alias tn="tmux new -S"
+alias tn="tmux new -s"
 alias t="tmux attach -c"
+
+. $HOME/.asdf/asdf.sh
