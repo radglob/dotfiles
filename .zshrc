@@ -99,6 +99,9 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 alias tn="tmux new -s"
-alias t="tmux attach -c"
+alias t="tmux attach -t"
+alias ssh="TERM=xterm ssh"
 
 . $HOME/.asdf/asdf.sh
+
+export PATH="$PATH:$HOME/bin:$HOME/.local/bin"
