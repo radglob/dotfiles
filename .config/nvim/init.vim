@@ -8,6 +8,7 @@ Plug 'elixir-lang/vim-elixir'
 Plug 'junegunn/fzf'
 Plug 'neomake/neomake'
 Plug 'pangloss/vim-javascript'
+Plug 'phanviet/vim-monokai-pro'
 Plug 'roxma/nvim-yarp'
 Plug 'sheerun/vim-polyglot'
 Plug 'slashmili/alchemist.vim'
@@ -35,7 +36,7 @@ set number
 set expandtab
 set textwidth=80
 set background=dark
-colorscheme nord
+colorscheme monokai_pro
 
 autocmd BufWritePost,BufEnter * Neomake
 
