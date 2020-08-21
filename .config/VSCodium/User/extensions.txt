@@ -1,0 +1,13 @@
+bung87.rails
+bung87.vscode-gemfile
+CraigMaslowski.erb
+dbaeumer.vscode-eslint
+DotJoshJohnson.xml
+misogi.ruby-rubocop
+mjmcloug.vscode-elixir
+ms-python.python
+rebornix.ruby
+redhat.vscode-yaml
+sianglim.slim
+vscodevim.vim
+wingrunr21.vscode-ruby
