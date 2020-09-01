@@ -51,3 +51,7 @@ let g:ale_linters = {
 \    'ruby': ['rubocop']
 \}
 
+" Folding
+set foldmethod=syntax
+set foldlevel=20
+
