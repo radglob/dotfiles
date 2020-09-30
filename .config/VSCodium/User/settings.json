@@ -26,5 +26,10 @@
     "editor.tabSize": 2,
     "files.associations": {
         "*.leex": "HTML (Eex)"
-    }
+    },
+    "[markdown]": {
+        "editor.rulers": [100],
+        "editor.wordWrap": "on",
+        "editor.quickSuggestions": false
+    },
 }
