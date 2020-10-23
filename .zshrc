@@ -102,6 +102,8 @@ alias tn="tmux new -s"
 alias t="tmux attach -t"
 alias ssh="TERM=xterm ssh"
 
+export EDITOR=vim
+
 . $HOME/.asdf/asdf.sh
 
 export PATH="$PATH:$HOME/bin:$HOME/.local/bin"
