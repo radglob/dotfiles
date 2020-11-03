@@ -105,9 +105,4 @@ alias ssh="TERM=xterm ssh"
 . $HOME/.asdf/asdf.sh
 
 export PATH="$PATH:$HOME/bin:$HOME/.local/bin"
-
-if command -v codium &> /dev/null
-then
-        alias code=codium
-fi
-
+export EDITOR=vim
