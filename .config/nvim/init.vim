@@ -128,6 +128,7 @@ augroup vimrcEx
 
   autocmd BufNewFile,BufRead *.tsx set filetype=typescript.tsx
   autocmd BufNewFile,BufRead *.jsx set filetype=javascript.jsx
+  autocmd BufNewFile,BufRead .prettierrc,.eslintrc set filetype=json
 augroup END
 
 """"""""""""""""""""""""""""""""""""""""
@@ -138,13 +139,25 @@ augroup END
 """"""""""""""""""""""""""""""""""""""""
 " vim-ale config
 """"""""""""""""""""""""""""""""""""""""
-let g:ale_linters = {'javascript': ['eslint'], 'typescript': ['tsserver', 'eslint'], 'typescript.tsx': ['tsserver', 'eslint']}
-let g:ale_fixers = {'javascript': ['prettier'], 'typescript': ['prettier'], 'typescript.tsx': ['prettier']}
+let g:ale_linters = {
+  \  'javascript': ['eslint'], 
+  \  'javascript.jsx': ['eslint'],
+  \  'typescript': ['tsserver', 'eslint'], 
+  \  'typescript.tsx': ['tsserver', 'eslint'],
+  \  'ruby': ['solargraph', 'rubocop']
+\}
+let g:ale_fixers = {
+  \  'javascript': ['prettier'], 
+  \  'javascript.jsx': ['prettier'],
+  \  'typescript': ['prettier'], 
+  \  'typescript.tsx': ['prettier'],
+  \  'ruby': ['rubocop']
+\}
 let g:ale_lint_on_text_changed = 'normal'
 let g:ale_lint_on_insert_leave = 1
-let g:ale_lin_delay = 0
-let g:ale_set_quickfix = 0
+let g:ale_lint_delay = 0
 let g:ale_set_loclist = 0
+let g:ale_fix_on_save = 1
 let g:ale_javascript_eslint_executable = 'eslint --cache'
 let g:ale_completion_enabled = 1
 nnoremap gj :ALENextWrap<cr>
