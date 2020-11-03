@@ -6,6 +6,7 @@ call plug#begin()
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-surround'
+Plug 'lifepillar/vim-solarized8'
 
 " JavaScript
 Plug 'MaxMEllon/vim-jsx-pretty'
@@ -53,6 +54,9 @@ set backspace=indent,eol,start
 set showcmd
 " Enable highlighting for syntax
 syntax on
+set termguicolors
+set background=light
+colorscheme solarized8
 
 " Enable file type detection.
 filetype plugin indent on
@@ -78,7 +82,6 @@ set splitright
 set splitbelow
 
 set textwidth=80
-set background=dark
 
 """"""""""""""""""""""""""""""""""""""""
 " vim-ruby configuration               "
@@ -143,6 +146,7 @@ let g:ale_lin_delay = 0
 let g:ale_set_quickfix = 0
 let g:ale_set_loclist = 0
 let g:ale_javascript_eslint_executable = 'eslint --cache'
+let g:ale_completion_enabled = 1
 nnoremap gj :ALENextWrap<cr>
 nnoremap gk :ALEPreviousWrap<cr>
 nnoremap g1 :ALEFirst<cr>
@@ -159,7 +163,7 @@ nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L> 
 
 " Fuzzy find with <C-P>
-nmap <C-P> :FZF<CR>
+nmap <C-P> :Files<CR>
 
 """""""""""""""""""""""""""""""""""""""""
 " Switch between production and test code
