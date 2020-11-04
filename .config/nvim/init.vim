@@ -140,18 +140,18 @@ augroup END
 " vim-ale config
 """"""""""""""""""""""""""""""""""""""""
 let g:ale_linters = {
-  \  'javascript': ['eslint'], 
-  \  'javascript.jsx': ['eslint'],
-  \  'typescript': ['tsserver', 'eslint'], 
-  \  'typescript.tsx': ['tsserver', 'eslint'],
-  \  'ruby': ['solargraph', 'rubocop']
+  \  'javascript': ['eslint', 'tsserver'], 
+  \  'javascript.jsx': ['eslint', 'tsserver'],
+  \  'typescript': ['tsserver', 'eslint', 'tsserver'], 
+  \  'typescript.tsx': ['tsserver', 'eslint', 'tsserver'],
+  \  'ruby': ['standardrb', 'solargraph']
 \}
 let g:ale_fixers = {
   \  'javascript': ['prettier'], 
   \  'javascript.jsx': ['prettier'],
   \  'typescript': ['prettier'], 
   \  'typescript.tsx': ['prettier'],
-  \  'ruby': ['rubocop']
+  \  'ruby': ['standardrb']
 \}
 let g:ale_lint_on_text_changed = 'normal'
 let g:ale_lint_on_insert_leave = 1
@@ -159,6 +159,7 @@ let g:ale_lint_delay = 0
 let g:ale_set_loclist = 0
 let g:ale_fix_on_save = 1
 let g:ale_javascript_eslint_executable = 'eslint --cache'
+let g:ale_ruby_standardrb_executable = 'bundle'
 let g:ale_completion_enabled = 1
 nnoremap gj :ALENextWrap<cr>
 nnoremap gk :ALEPreviousWrap<cr>
