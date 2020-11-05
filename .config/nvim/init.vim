@@ -15,6 +15,8 @@ Plug 'pangloss/vim-javascript'
 " Ruby
 Plug 'vim-ruby/vim-ruby'
 
+Plug 'elixir-editors/vim-elixir'
+
 " Semantic Support
 Plug 'dense-analysis/ale'
 
@@ -144,14 +146,16 @@ let g:ale_linters = {
   \  'javascript.jsx': ['eslint', 'tsserver'],
   \  'typescript': ['tsserver', 'eslint', 'tsserver'], 
   \  'typescript.tsx': ['tsserver', 'eslint', 'tsserver'],
-  \  'ruby': ['standardrb', 'solargraph']
+  \  'ruby': ['standardrb', 'solargraph'],
+  \  'elixir': ['elixir-ls']
 \}
 let g:ale_fixers = {
   \  'javascript': ['prettier'], 
   \  'javascript.jsx': ['prettier'],
   \  'typescript': ['prettier'], 
   \  'typescript.tsx': ['prettier'],
-  \  'ruby': ['standardrb']
+  \  'ruby': ['standardrb'],
+  \  'elixir': ['mix_format']
 \}
 let g:ale_lint_on_text_changed = 'normal'
 let g:ale_lint_on_insert_leave = 1
@@ -160,6 +164,7 @@ let g:ale_set_loclist = 0
 let g:ale_fix_on_save = 1
 let g:ale_javascript_eslint_executable = 'eslint --cache'
 let g:ale_ruby_standardrb_executable = 'bundle'
+let g:ale_elixir_elixir_ls_executable = expand("~/bin/elixir-ls")
 let g:ale_completion_enabled = 1
 nnoremap gj :ALENextWrap<cr>
 nnoremap gk :ALEPreviousWrap<cr>
