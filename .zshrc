@@ -107,3 +107,8 @@ export EDITOR=vim
 . $HOME/.asdf/asdf.sh
 
 export PATH="$PATH:$HOME/bin:$HOME/.local/bin"
+
+if command -v xdg-open &> /dev/null
+then
+  alias open=xdg-open
+fi
