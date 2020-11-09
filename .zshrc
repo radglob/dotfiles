@@ -112,3 +112,9 @@ if command -v xdg-open &> /dev/null
 then
   alias open=xdg-open
 fi
+
+# If vim and neovim are both installed, use neovim.
+if command -v vim &> /dev/null && command -v nvim &> /dev/null
+then
+  alias vim=nvim
+fi;
