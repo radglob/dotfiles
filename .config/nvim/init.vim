@@ -184,6 +184,8 @@ nnoremap <C-L> <C-W><C-L>
 " Fuzzy find with <C-P>
 nmap <C-P> :Files<CR>
 
+nnoremap <C-F> :Rg<CR>
+
 """""""""""""""""""""""""""""""""""""""""
 " Switch between production and test code
 """""""""""""""""""""""""""""""""""""""""
@@ -201,7 +203,7 @@ function! AlternateForCurrentFile()
     if in_app
       let new_file = substitute(new_file, '^app/', '', '')
     end
-    let new_file = substitute(new_file '\.e\?rb$', '_spec.rb', '')
+    let new_file = substitute(new_file, '\.e\?rb$', '_spec.rb', '')
     let new_file = 'spec/' . new_file
   else
     let new_file = substitute(new_file, '_spec\.rb$', '.rb', '')
@@ -235,10 +237,10 @@ function! RunTestFile(...)
   elseif !exists("t:jln_test_file")
     return
   end
-  call RunTests("t:jln_test_file")
+  call RunTests(t:jln_test_file)
 endfunction
 
-function! RunNearesttest()
+function! RunNearestTest()
   let spec_line_number = line('.')
   call RunTestFile(":" . spec_line_number)
 endfunction
@@ -251,6 +253,7 @@ function! RunTests(filename)
   if expand("%") != ""
     :w
   end
+  echo expand(a:filename)
   if executable(a:filename)
     exec ":!./" . a:filename
   elseif filereadable("bin/test")
