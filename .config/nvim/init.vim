@@ -144,8 +144,8 @@ augroup END
 let g:ale_linters = {
   \  'javascript': ['eslint', 'tsserver'], 
   \  'javascript.jsx': ['eslint', 'tsserver'],
-  \  'typescript': ['tsserver', 'eslint', 'tsserver'], 
-  \  'typescript.tsx': ['tsserver', 'eslint', 'tsserver'],
+  \  'typescript': ['eslint', 'tsserver'], 
+  \  'typescript.tsx': ['eslint', 'tsserver'],
   \  'ruby': ['standardrb', 'solargraph'],
   \  'elixir': ['elixir-ls']
 \}
