@@ -118,3 +118,5 @@ if command -v vim &> /dev/null && command -v nvim &> /dev/null
 then
   alias vim=nvim
 fi;
+
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$HOME/.radicle/bin:$PATH"
