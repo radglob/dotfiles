@@ -119,4 +119,5 @@ then
   alias vim=nvim
 fi;
 
-export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$HOME/.radicle/bin:$PATH"
+export GOPATH="$HOME/.go"
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$HOME/.radicle/bin:$GOPATH/bin:$PATH"
