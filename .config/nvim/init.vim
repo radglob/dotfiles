@@ -196,25 +196,25 @@ endfunction
 function! AlternateForCurrentFile()
   let current_file = expand("%")
   let new_file = current_file
-  let in_spec = match(current_file, '^[spec|test]/') != -1
+  let in_spec = match(current_file, '^spec/\|^test/') != -1
   let going_to_spec = !in_spec
   let in_app = match(current_file, '\<controllers\>') != -1 || match(current_file, '\<models\>') != -1 || match(current_file, '\<workers\>') != -1 || match(current_file, '\<views\>') != -1 || match(current_file, '\<helpers\>') != -1 || match(current_file, '\<services\>') != -1
 
   if isdirectory('test')
-    let specdir = 'test'
+    let spec_type = 'test'
   elseif isdirectory('spec')
-    let specdir = 'spec'
+    let spec_type = 'spec'
   end
 
   if going_to_spec
     if in_app
       let new_file = substitute(new_file, '^app/', '', '')
     end
-    let new_file = substitute(new_file, '\.e\?rb$', '_' . specdir . '.rb', '')
-    let new_file = specdir . '/' . new_file
+    let new_file = substitute(new_file, '\.e\?rb$', '_' . spec_type . '.rb', '')
+    let new_file = spec_type . '/' . new_file
   else
-    let new_file = substitute(new_file, '_' . specdir . '\.rb$', '.rb', '')
-    let new_file = substitute(new_file, '^' . specdir . '/', '', '')
+    let new_file = substitute(new_file, '_' . spec_type . '\.rb$', '.rb', '')
+    let new_file = substitute(new_file, '^' . spec_type . '/', '', '')
     if in_app
       let new_file = 'app/' . new_file
     end
@@ -237,7 +237,7 @@ function! RunTestFile(...)
     let command_suffix = ""
   endif
 
-  let in_test_file = match(expand("%"), '\(_spec.rb\|.test.ts[x]\|.test.js[x]\)$') != -1
+  let in_test_file = match(expand("%"), '\(_test.rb\|_spec.rb\|.test.ts[x]\|.test.js[x]\)$') != -1
 
   if in_test_file
     call SetTestFile(command_suffix)
@@ -260,7 +260,6 @@ function! RunTests(filename)
   if expand("%") != ""
     :w
   end
-  echo expand(a:filename)
   if executable(a:filename)
     exec ":!./" . a:filename
   elseif filereadable("bin/test")
@@ -269,5 +268,7 @@ function! RunTests(filename)
     exec ":!bin/rspec --color " . a:filename
   elseif filereadable("Gemfile") && strlen(glob("spec/**/*.rb"))
     exec ":!bundle exec rspec --color " . a:filename
+  elseif filereadable("Gemfile") && strlen(glob("test/**/*.rb"))
+    exec ":!bundle exec rails test " . a:filename
   end
 endfunction
