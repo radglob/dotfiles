@@ -146,7 +146,7 @@ let g:ale_linters = {
   \  'javascript.jsx': ['eslint', 'tsserver'],
   \  'typescript': ['eslint', 'tsserver'], 
   \  'typescript.tsx': ['eslint', 'tsserver'],
-  \  'ruby': ['standardrb', 'solargraph'],
+  \  'ruby': ['standardrb', 'solargraph', 'sorbet'],
   \  'elixir': ['elixir-ls']
 \}
 let g:ale_fixers = {
@@ -164,6 +164,7 @@ let g:ale_set_loclist = 0
 let g:ale_fix_on_save = 1
 let g:ale_javascript_eslint_executable = 'eslint --cache'
 let g:ale_ruby_standardrb_executable = 'bundle'
+let g:ale_ruby_sorbet_executable = 'bundle'
 let g:ale_elixir_elixir_ls_release = expand("~/bin/elixir-ls")
 let g:ale_completion_enabled = 1
 nnoremap gj :ALENextWrap<cr>
