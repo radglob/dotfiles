@@ -5,8 +5,9 @@ call plug#begin()
 " General Plugins
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-Plug 'tpope/vim-surround'
 Plug 'lifepillar/vim-solarized8'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-surround'
 
 " JavaScript
 Plug 'MaxMEllon/vim-jsx-pretty'
@@ -15,6 +16,7 @@ Plug 'pangloss/vim-javascript'
 " Ruby
 Plug 'vim-ruby/vim-ruby'
 
+" Elixir
 Plug 'elixir-editors/vim-elixir'
 
 " Semantic Support
