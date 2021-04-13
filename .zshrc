@@ -122,3 +122,8 @@ fi;
 export GOPATH="$HOME/.go"
 export FLYCTL_INSTALL="$HOME/.fly"
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$HOME/.radicle/bin:$GOPATH/bin:$FLYCTL_INSTALL/bin:$PATH"
+
+if command -v xclip &> /dev/null
+then
+  alias pbcopy="xclip -sel clip"
+fi;
