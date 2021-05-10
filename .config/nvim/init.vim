@@ -19,6 +19,18 @@ Plug 'vim-ruby/vim-ruby'
 " Elixir
 Plug 'elixir-editors/vim-elixir'
 
+" Clojure
+Plug 'guns/vim-clojure-highlight'
+Plug 'guns/vim-clojure-static'
+Plug 'guns/vim-sexp'
+Plug 'tpope/vim-sexp-mappings-for-regular-people'
+Plug 'junegunn/rainbow_parentheses.vim'
+Plug 'clojure-vim/vim-jack-in'
+Plug 'radenling/vim-dispatch-neovim'
+Plug 'SevereOverfl0w/vim-replant', { 'do': ':UpdateRemotePlugins' }
+Plug 'tpope/vim-dispatch'
+Plug 'tpope/vim-fireplace'
+
 " Semantic Support
 Plug 'dense-analysis/ale'
 
@@ -133,6 +145,9 @@ augroup vimrcEx
   autocmd BufNewFile,BufRead *.tsx set filetype=typescript.tsx
   autocmd BufNewFile,BufRead *.jsx set filetype=javascript.jsx
   autocmd BufNewFile,BufRead .prettierrc,.eslintrc set filetype=json
+
+  " Enable rainbow parens for Clojure(Script)
+  autocmd FileType clojure RainbowParentheses
 augroup END
 
 """"""""""""""""""""""""""""""""""""""""
