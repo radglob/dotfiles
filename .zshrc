@@ -127,3 +127,5 @@ if command -v xclip &> /dev/null
 then
   alias pbcopy="xclip -sel clip"
 fi;
+
+[ -d "$HOME/.nix-profile" ] && . $HOME/.nix-profile/etc/profile.d/nix.sh
