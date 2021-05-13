@@ -8,16 +8,18 @@ Plug 'junegunn/fzf.vim'
 Plug 'lifepillar/vim-solarized8'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 
 " JavaScript
 Plug 'MaxMEllon/vim-jsx-pretty'
 Plug 'pangloss/vim-javascript'
 
-" Ruby
-Plug 'vim-ruby/vim-ruby'
+" Python
+Plug 'deoplete-plugins/deoplete-jedi'
 
 " Elixir
 Plug 'elixir-editors/vim-elixir'
+Plug 'slashmili/alchemist.vim'
 
 " Clojure
 Plug 'guns/vim-clojure-highlight'
@@ -30,6 +32,7 @@ Plug 'radenling/vim-dispatch-neovim'
 Plug 'SevereOverfl0w/vim-replant', { 'do': ':UpdateRemotePlugins' }
 Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-fireplace'
+Plug 'Olical/conjure'
 
 " Semantic Support
 Plug 'dense-analysis/ale'
@@ -74,6 +77,9 @@ set termguicolors
 set background=light
 colorscheme solarized8
 
+" Enable autocompletions on startup.
+let g:deoplete#enable_at_startup = 1
+
 " Enable file type detection.
 filetype plugin indent on
 
@@ -104,6 +110,11 @@ set textwidth=80
 """"""""""""""""""""""""""""""""""""""""
 :let g:ruby_indent_block_style = 'do'
 :let g:ruby_indent_assignemtn_style = 'variable'
+
+""""""""""""""""""""""""""""""""""""""""
+" Clojure Completions                  "
+""""""""""""""""""""""""""""""""""""""""
+:call deoplete#custom#option('keyword_patterns', {'clojure': '[\w!$%&*+/:<=>?@\^_~\-\.#]*'})
 
 """"""""""""""""""""""""""""""""""""""""
 " Custom autocmds                      "
