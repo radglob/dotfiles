@@ -215,9 +215,9 @@ nmap <C-P> :Files<CR>
 
 nnoremap <C-F> :Rg<CR>
 
-"""""""""""""""""""""""""""""""""""""""""
-" Switch between production and test code
-"""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Switch between production and test code for Elixir 
+""""""""""""""""""""""""""""""""""""""""""""""""""""
 function! OpenTestAlternate()
   let new_file = AlternateForCurrentFile()
   exec ':e ' . new_file
@@ -225,28 +225,20 @@ endfunction
 function! AlternateForCurrentFile()
   let current_file = expand("%")
   let new_file = current_file
-  let in_spec = match(current_file, '^spec/\|^test/') != -1
-  let going_to_spec = !in_spec
-  let in_app = match(current_file, '\<controllers\>') != -1 || match(current_file, '\<models\>') != -1 || match(current_file, '\<workers\>') != -1 || match(current_file, '\<jobs\>') != -1 || match(current_file, '\<views\>') != -1 || match(current_file, '\<helpers\>') != -1 || match(current_file, '\<services\>') != -1
+  let in_test = match(current_file, '^test/') != -1
+  let going_to_test = !in_test
+  let in_lib = match(current_file, '^lib/') != -1
 
-  if isdirectory('test')
-    let spec_type = 'test'
-  elseif isdirectory('spec')
-    let spec_type = 'spec'
-  end
-
-  if going_to_spec
-    if in_app
-      let new_file = substitute(new_file, '^app/', '', '')
+  if going_to_test
+    if in_lib
+      let new_file = substitute(new_file, '^lib/', '', '')
     end
-    let new_file = substitute(new_file, '\.e\?rb$', '_' . spec_type . '.rb', '')
-    let new_file = spec_type . '/' . new_file
+    let new_file = substitute(new_file, '\.ex$', '_test.exs', '')
+    let new_file = 'test/' . new_file
   else
-    let new_file = substitute(new_file, '_' . spec_type . '\.rb$', '.rb', '')
-    let new_file = substitute(new_file, '^' . spec_type . '/', '', '')
-    if in_app
-      let new_file = 'app/' . new_file
-    end
+    let new_file = substitute(new_file, '_test\.exs$', '.ex', '')
+    let new_file = substitute(new_file, '^test/', '', '')
+    let new_file = 'lib/' . new_file
   endif
   return new_file
 endfunction
@@ -266,7 +258,7 @@ function! RunTestFile(...)
     let command_suffix = ""
   endif
 
-  let in_test_file = match(expand("%"), '\(_test.rb\|_spec.rb\|.test.ts[x]\|.test.js[x]\)$') != -1
+  let in_test_file = match(expand("%"), '_test.exs$') != -1
 
   if in_test_file
     call SetTestFile(command_suffix)
@@ -277,8 +269,8 @@ function! RunTestFile(...)
 endfunction
 
 function! RunNearestTest()
-  let spec_line_number = line('.')
-  call RunTestFile(":" . spec_line_number)
+  let test_line_number = line('.')
+  call RunTestFile(":" . test_line_number)
 endfunction
 
 function! SetTestFile(command_suffix)
@@ -291,13 +283,7 @@ function! RunTests(filename)
   end
   if executable(a:filename)
     exec ":!./" . a:filename
-  elseif filereadable("bin/test")
-    exec ":!bin/test " . a:filename
-  elseif filereadable("bin/rspec")
-    exec ":!bin/rspec --color " . a:filename
-  elseif filereadable("Gemfile") && strlen(glob("spec/**/*.rb"))
-    exec ":!bundle exec rspec --color " . a:filename
-  elseif filereadable("Gemfile") && strlen(glob("test/**/*.rb"))
-    exec ":!bundle exec rails test " . a:filename
+  elseif filereadable("mix.exs") && strlen(glob("test/**/*.exs"))
+    exec ":!mix test " . a:filename
   end
 endfunction
