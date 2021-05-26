@@ -8,18 +8,13 @@ Plug 'junegunn/fzf.vim'
 Plug 'lifepillar/vim-solarized8'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 
 " JavaScript
 Plug 'MaxMEllon/vim-jsx-pretty'
 Plug 'pangloss/vim-javascript'
 
-" Python
-Plug 'deoplete-plugins/deoplete-jedi'
-
 " Elixir
 Plug 'elixir-editors/vim-elixir'
-Plug 'slashmili/alchemist.vim'
 
 " Clojure
 Plug 'guns/vim-clojure-highlight'
@@ -32,10 +27,14 @@ Plug 'radenling/vim-dispatch-neovim'
 Plug 'SevereOverfl0w/vim-replant', { 'do': ':UpdateRemotePlugins' }
 Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-fireplace'
-Plug 'Olical/conjure'
 
-" Semantic Support
-Plug 'dense-analysis/ale'
+" LSP Support
+Plug 'neovim/nvim-lspconfig'
+Plug 'hrsh7th/nvim-compe'
+
+" treesitter support
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'nvim-treesitter/playground'
 
 call plug#end()
 
@@ -77,9 +76,6 @@ set termguicolors
 set background=light
 colorscheme solarized8
 
-" Enable autocompletions on startup.
-let g:deoplete#enable_at_startup = 1
-
 " Enable file type detection.
 filetype plugin indent on
 
@@ -106,17 +102,6 @@ set splitbelow
 set textwidth=80
 
 """"""""""""""""""""""""""""""""""""""""
-" vim-ruby configuration               "
-""""""""""""""""""""""""""""""""""""""""
-:let g:ruby_indent_block_style = 'do'
-:let g:ruby_indent_assignemtn_style = 'variable'
-
-""""""""""""""""""""""""""""""""""""""""
-" Clojure Completions                  "
-""""""""""""""""""""""""""""""""""""""""
-:call deoplete#custom#option('keyword_patterns', {'clojure': '[\w!$%&*+/:<=>?@\^_~\-\.#]*'})
-
-""""""""""""""""""""""""""""""""""""""""
 " Custom autocmds                      "
 """"""""""""""""""""""""""""""""""""""""
 augroup vimrcEx
@@ -130,7 +115,7 @@ augroup vimrcEx
     \ endif
 
   " For ruby, autoindent with two spaces, always expand tabs
-  autocmd FileType ruby,haml,eruby,yaml,html,sass set ai sw=2 sts=2 et
+  autocmd FileType elixir,eelixir,leex,yaml,html,sass set ai sw=2 sts=2 et
 
   autocmd BufRead *.md  set ai formatoptions=tcroqn2 comments=n:&gt;
   autocmd BufRead *.markdown  set ai formatoptions=tcroqn2 comments=n:&gt;
@@ -167,41 +152,6 @@ augroup END
 :set statusline=%<%f\ (%{&ft})\ %-4(%m%)%=%-19(%3lm%02c%03V%)
 
 """"""""""""""""""""""""""""""""""""""""
-" vim-ale config
-""""""""""""""""""""""""""""""""""""""""
-let g:ale_linters = {
-  \  'javascript': ['eslint', 'tsserver'], 
-  \  'javascript.jsx': ['eslint', 'tsserver'],
-  \  'typescript': ['eslint', 'tsserver'], 
-  \  'typescript.tsx': ['eslint', 'tsserver'],
-  \  'ruby': ['standardrb', 'solargraph', 'sorbet'],
-  \  'elixir': ['elixir-ls']
-\}
-let g:ale_fixers = {
-  \  'javascript': ['prettier'], 
-  \  'javascript.jsx': ['prettier'],
-  \  'typescript': ['prettier'], 
-  \  'typescript.tsx': ['prettier'],
-  \  'ruby': ['standardrb'],
-  \  'elixir': ['mix_format']
-\}
-let g:ale_lint_on_text_changed = 'normal'
-let g:ale_lint_on_insert_leave = 1
-let g:ale_lint_delay = 0
-let g:ale_set_loclist = 0
-let g:ale_fix_on_save = 1
-let g:ale_javascript_eslint_executable = 'eslint --cache'
-let g:ale_ruby_standardrb_executable = 'bundle'
-let g:ale_ruby_sorbet_executable = 'bundle'
-let g:ale_elixir_elixir_ls_release = expand("~/bin/elixir-ls")
-let g:ale_completion_enabled = 1
-nnoremap gj :ALENextWrap<cr>
-nnoremap gk :ALEPreviousWrap<cr>
-nnoremap g1 :ALEFirst<cr>
-" Kill all ALE-related processes.
-nnoremap g0 :ALEStopAllLSPs<cr>
-
-""""""""""""""""""""""""""""""""""""""""
 " Misc keymaps
 """"""""""""""""""""""""""""""""""""""""
 " Change splits without <C-W>
@@ -214,6 +164,61 @@ nnoremap <C-L> <C-W><C-L>
 nmap <C-P> :Files<CR>
 
 nnoremap <C-F> :Rg<CR>
+
+""""""""""""""""""""""""""""""""""""""""
+" LSP Config
+""""""""""""""""""""""""""""""""""""""""
+
+lua << EOF
+require'lspconfig'.elixirls.setup{
+  cmd={"/home/jln/bin/elixir-ls/language_server.sh"},
+  filetypes={ "elixir", "eelixir" }
+}
+
+require'lspconfig'.clojure_lsp.setup{}
+
+require'lspconfig'.pyls.setup{
+  cmd={ "pylsp" },
+  filetypes={ "python" }
+}
+EOF
+
+let g:compe = {}
+let g:compe.enabled = v:true
+let g:compe.autocomplete = v:true
+let g:compe.debug = v:false
+let g:compe.min_length = 1
+let g:compe.preselect = 'enable'
+let g:compe.throttle_time = 80
+let g:compe.source_timeout = 200
+let g:compe.incomplete_delay = 400
+let g:compe.max_abbr_width = 100
+let g:compe.max_kind_width = 100
+let g:compe.max_menu_width = 100
+let g:compe.documentation = v:true
+
+let g:compe.source = {}
+let g:compe.source.path = v:true
+let g:compe.source.buffer = v:true
+let g:compe.source.calc = v:true
+let g:compe.source.nvim_lsp = v:true
+let g:compe.source.nvim_lua = v:true
+let g:compe.source.vsnip = v:true
+let g:compe.source.ultisnips = v:true
+
+nnoremap <silent> gd <cmd>lua vim.lsp.buf.definition()<CR>
+nnoremap <silent> gD <cmd>lua vim.lsp.buf.declaration()<CR>
+nnoremap <silent> gr <cmd>lua vim.lsp.buf.references()<CR>
+nnoremap <silent> gi <cmd>lua vim.lsp.buf.implementation()<CR>
+nnoremap <silent> K <cmd>lua vim.lsp.buf.hover()<CR>
+nnoremap <silent> <C-k> <cmd>lua vim.lsp.buf.signature_help()<CR>
+nnoremap <silent> <C-n> <cmd>lua vim.lsp.diagnostic.goto_prev()<CR>
+
+autocmd BufWritePre *.clj lua vim.lsp.buf.formatting_sync(nil, 100)
+autocmd BufWritePre *.cljs lua vim.lsp.buf.formatting_sync(nil, 100)
+autocmd BufWritePre *.ex lua vim.lsp.buf.formatting_sync(nil, 100)
+autocmd BufWritePre *.exs lua vim.lsp.buf.formatting_sync(nil, 100)
+autocmd BufWritePre *.py lua vim.lsp.buf.formatting_sync(nil, 100)
 
 """""""""""""""""""""""""""""""""""""""""
 " Switch between production and test code
