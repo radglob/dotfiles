@@ -102,8 +102,6 @@ alias tn="tmux new -s"
 alias t="tmux attach -t"
 alias ssh="TERM=xterm ssh"
 
-export EDITOR=vim
-
 . $HOME/.asdf/asdf.sh
 
 export PATH="$PATH:$HOME/bin:$HOME/.local/bin"
@@ -113,11 +111,13 @@ then
   alias open=xdg-open
 fi
 
-# If vim and neovim are both installed, use neovim.
-if command -v vim &> /dev/null && command -v nvim &> /dev/null
+# If neovim is installed, use neovim as vim.
+if command -v nvim &> /dev/null
 then
   alias vim=nvim
 fi;
+
+export EDITOR=nvim
 
 export GOPATH="$HOME/.go"
 export FLYCTL_INSTALL="$HOME/.fly"
