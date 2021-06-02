@@ -5,7 +5,7 @@ call plug#begin()
 " General Plugins
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-Plug 'lifepillar/vim-solarized8'
+Plug 'phanviet/vim-monokai-pro'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 
@@ -73,8 +73,8 @@ set showcmd
 " Enable highlighting for syntax
 syntax on
 set termguicolors
-set background=light
-colorscheme solarized8
+set background=dark
+colorscheme monokai_pro
 
 " Enable file type detection.
 filetype plugin indent on
