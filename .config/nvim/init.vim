@@ -291,3 +291,17 @@ function! RunTests(filename)
     exec ":!mix test " . a:filename
   end
 endfunction
+
+""""""""""""""""""""""""""""""""""""""""
+" Control spotify with vim commands
+""""""""""""""""""""""""""""""""""""""""
+command SptToggle exec ":!spt pb -t"
+command -nargs=+ SptPlaySong exec ":!spt p --name \"<args>\" --track"
+command -nargs=+ SptPlayPlaylist exec ":!spt p --name \"<args>\" --playlist"
+command -nargs=+ SptPlayAlbum exec ":!spt p --name \"<args>\" --album"
+command SptToggleShuffle exec ":!spt pb --shuffle"
+command SptShow exec ":!spt pb -s"
+command SptNext exec ":!spt pb -n"
+command SptPrev exec ":!spt pb -p"
+command SptLike exec ":!spt pb --like"
+
