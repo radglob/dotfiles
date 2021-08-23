@@ -132,8 +132,7 @@ augroup vimrcEx
   " Two-space indents in JSON
   autocmd! FileType json set sw=2 sts=2 et
 
-  " Unmap Rdoc for ruby files.
-  nnoremap K <Nop>
+  nnoremap <silent> g? <cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>
 
   " Compute syntax highlighting from beginning of file.
   autocmd BufEnter * :syntax sync fromstart
