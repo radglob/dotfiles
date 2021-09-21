@@ -30,7 +30,13 @@ Plug 'tpope/vim-fireplace'
 
 " LSP Support
 Plug 'neovim/nvim-lspconfig'
-Plug 'hrsh7th/nvim-compe'
+Plug 'hrsh7th/nvim-cmp'
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/cmp-buffer'
+
+" For vsnip user.
+Plug 'hrsh7th/cmp-vsnip'
+Plug 'hrsh7th/vim-vsnip'
 
 " treesitter support
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
@@ -169,41 +175,54 @@ nnoremap <C-F> :Rg<CR>
 """"""""""""""""""""""""""""""""""""""""
 
 lua << EOF
-require'lspconfig'.elixirls.setup{
-  cmd={"/home/jln/bin/elixir-ls/language_server.sh"},
-  filetypes={ "elixir", "eelixir" }
-}
-
-require'lspconfig'.clojure_lsp.setup{}
-
-require'lspconfig'.pyls.setup{
-  cmd={ "pylsp" },
-  filetypes={ "python" }
-}
 EOF
 
-let g:compe = {}
-let g:compe.enabled = v:true
-let g:compe.autocomplete = v:true
-let g:compe.debug = v:false
-let g:compe.min_length = 1
-let g:compe.preselect = 'enable'
-let g:compe.throttle_time = 80
-let g:compe.source_timeout = 200
-let g:compe.incomplete_delay = 400
-let g:compe.max_abbr_width = 100
-let g:compe.max_kind_width = 100
-let g:compe.max_menu_width = 100
-let g:compe.documentation = v:true
+""""""""""""""""""""""""""""""""""""""""
+" nvim-cmp and LSP config
+""""""""""""""""""""""""""""""""""""""""
+lua << EOF
+  -- Setup nvim-cmp.
+  local cmp = require'cmp'
 
-let g:compe.source = {}
-let g:compe.source.path = v:true
-let g:compe.source.buffer = v:true
-let g:compe.source.calc = v:true
-let g:compe.source.nvim_lsp = v:true
-let g:compe.source.nvim_lua = v:true
-let g:compe.source.vsnip = v:true
-let g:compe.source.ultisnips = v:true
+  cmp.setup({
+    snippet = {
+      expand = function(args)
+        -- For `vsnip` user.
+        vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` user.
+
+      end,
+    },
+    mapping = {
+      ['<C-d>'] = cmp.mapping.scroll_docs(-4),
+      ['<C-f>'] = cmp.mapping.scroll_docs(4),
+      ['<C-Space>'] = cmp.mapping.complete(),
+      ['<C-e>'] = cmp.mapping.close(),
+      ['<CR>'] = cmp.mapping.confirm({ select = true }),
+    },
+    sources = {
+      { name = 'nvim_lsp' },
+      { name = 'vsnip' },
+      { name = 'buffer' },
+    }
+  })
+
+  -- Setup lspconfig.
+  require'lspconfig'.elixirls.setup{
+    cmd={"/home/jln/bin/elixir-ls/language_server.sh"},
+    filetypes={ "elixir", "eelixir" },
+    capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+  }
+
+  require'lspconfig'.clojure_lsp.setup{
+    capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+  }
+
+  require'lspconfig'.pyls.setup{
+    cmd={ "pylsp" },
+    filetypes={ "python" },
+    capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+  }
+EOF
 
 nnoremap <silent> gd <cmd>lua vim.lsp.buf.definition()<CR>
 nnoremap <silent> gD <cmd>lua vim.lsp.buf.declaration()<CR>
@@ -216,7 +235,7 @@ autocmd BufWritePre *.clj lua vim.lsp.buf.formatting_sync(nil, 100)
 autocmd BufWritePre *.cljs lua vim.lsp.buf.formatting_sync(nil, 100)
 autocmd BufWritePre *.ex lua vim.lsp.buf.formatting_sync(nil, 100)
 autocmd BufWritePre *.exs lua vim.lsp.buf.formatting_sync(nil, 100)
-autocmd BufWritePre *.py lua vim.lsp.buf.formatting_sync(nil, 100)
+"autocmd BufWritePre *.py lua vim.lsp.buf.formatting_sync(nil, 100)
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""
 " Switch between production and test code for Elixir 
