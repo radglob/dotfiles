@@ -8,8 +8,8 @@ require('paq') {
   'savq/paq-nvim';
   'nvim-lua/plenary.nvim';
   'nvim-telescope/telescope.nvim';
-  'phanviet/vim-monokai-pro';
   'tpope/vim-surround';
+  'overcache/NeoSolarized';
 
   -- Elixir-specific.
   'elixir-editors/vim-elixir';

@@ -4,7 +4,7 @@ local cmd = vim.cmd
 
 -- Global editor configs.
 o.autoindent = true
-o.background = 'dark'
+o.background = 'light'
 o.cursorline = false
 o.expandtab = true
 o.foldenable = false
@@ -23,5 +23,5 @@ o.tabstop = 2
 o.termguicolors = true
 
 cmd("syntax on")
-cmd("colorscheme monokai_pro")
+cmd("colorscheme NeoSolarized")
 
