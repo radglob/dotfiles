@@ -25,3 +25,6 @@ o.termguicolors = true
 cmd("syntax on")
 cmd("colorscheme NeoSolarized")
 
+stl = require('statusline.line')
+o.statusline = '%!luaeval("stl.statusline()")'
+
