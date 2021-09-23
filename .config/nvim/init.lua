@@ -42,4 +42,5 @@ require('mappings')
 require('spotify')
 require('treesitter')
 require('lsp')
+require('telescope-setup')
 
