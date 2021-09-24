@@ -16,10 +16,6 @@ cmp.setup({
   }
 })
 
-lsp.pyright.setup {
-  capabilities = cmp_lsp.update_capabilities(vim.lsp.protocol.make_client_capabilities())
-}
-
 lsp.elixirls.setup {
   cmd = {"/home/jln/bin/elixir-ls/language_server.sh"},
   capabilities = cmp_lsp.update_capabilities(vim.lsp.protocol.make_client_capabilities())
