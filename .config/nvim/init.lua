@@ -19,8 +19,7 @@ require('paq') {
 
   -- Clojure-specific.
   'clojure-vim/clojure.vim';
-  'guns/vim-sexp';
-  'tpope/vim-sexp-mappings-for-regular-people';
+  'eraserhd/parinfer-rust';
   'junegunn/rainbow_parentheses.vim';
 
   'neovim/nvim-lspconfig';
