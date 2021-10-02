@@ -9,6 +9,7 @@ require('paq') {
   'nvim-lua/plenary.nvim';
   'nvim-telescope/telescope.nvim';
   'tpope/vim-surround';
+  'tpope/vim-fugitive';
   'overcache/NeoSolarized';
 
   -- Elixir-specific.
@@ -19,7 +20,8 @@ require('paq') {
 
   -- Clojure-specific.
   'clojure-vim/clojure.vim';
-  'eraserhd/parinfer-rust';
+  'guns/vim-sexp';
+  'tpope/vim-sexp-mappings-for-regular-people';
   'junegunn/rainbow_parentheses.vim';
 
   'neovim/nvim-lspconfig';
