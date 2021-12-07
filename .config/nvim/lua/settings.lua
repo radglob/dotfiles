@@ -25,6 +25,7 @@ o.splitbelow = true
 o.splitright = true
 o.tabstop = 2
 o.termguicolors = true
+g.airline_powerline_fonts = 1
 
 cmd("syntax on")
 cmd("colorscheme dracula")

@@ -5,7 +5,7 @@ local opt = vim.opt
 local fn = vim.fn
 
 require('paq') {
-  'Mofiqul/dracula.nvim';
+  {'dracula/vim', as = "dracula"};
   'folke/lua-dev.nvim';
   'hrsh7th/cmp-buffer';
   'hrsh7th/cmp-nvim-lsp';
@@ -16,13 +16,13 @@ require('paq') {
   'nvim-lua/plenary.nvim';
   'nvim-telescope/telescope.nvim';
   'nvim-treesitter/nvim-treesitter';
-  'preservim/nerdtree';
   'savq/paq-nvim';
   'sheerun/vim-polyglot';
   'tpope/vim-commentary';
   'tpope/vim-fugitive';
   'tpope/vim-surround';
   'vim-airline/vim-airline';
+  'vim-airline/vim-airline-themes';
 }
 
 function map(mode, lhs, rhs, opts)
