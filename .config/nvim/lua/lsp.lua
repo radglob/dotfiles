@@ -24,10 +24,11 @@ cmp.setup({
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
+capabilities = cmp_lsp.update_capabilities(capabilities)
 
 lsp.elixirls.setup {
   cmd = {"/home/jln/bin/elixir-ls/language_server.sh"},
-  capabilities = cmp_lsp.update_capabilities(capabilities),
+  capabilities = capabilities,
   on_attach = on_attach,
   settings = {
     elixirLS = {
@@ -36,7 +37,17 @@ lsp.elixirls.setup {
   }
 }
 
-lsp.solargraph.setup{}
+lsp.solargraph.setup {}
+
+lsp.html.setup {
+  capabilities = capabilities
+}
+
+lsp.cssls.setup = {
+  capabilities = capabilities
+}
+
+lsp.eslint.setup {}
 
 map('n', '<leader>,', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>')
 map('n', '<leader>;', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>')
