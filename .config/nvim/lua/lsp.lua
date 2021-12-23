@@ -44,7 +44,11 @@ lsp.elixirls.setup {
   }
 }
 
-lsp.solargraph.setup {}
+-- Having issues with Rubocop or whatever with a Rails app (or something else using bundler?
+-- Check ~/.cache/nvim/lsp.log and use `specific_install` to add any gems you might need.
+lsp.solargraph.setup {
+  cmd = { "solargraph", "stdio" }
+}
 
 lsp.html.setup {
   capabilities = capabilities

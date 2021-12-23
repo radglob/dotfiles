@@ -20,3 +20,4 @@ map('', '<leader>ff', [[<cmd>lua require('telescope.builtin').find_files()<cr>]]
 map('', '<leader>fg', [[<cmd>lua require('telescope.builtin').live_grep()<cr>]])
 map('', '<leader>fs', [[<cmd>lua require('telescope.builtin').git_files()<cr>]])
 map('', '<leader>fb', [[<cmd>lua require('telescope.builtin').buffers()<cr>]])
+map('', '<leader>x', ':!open %<cr>')

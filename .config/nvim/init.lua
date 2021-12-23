@@ -9,7 +9,7 @@ require('paq') {
   'savq/paq-nvim';
 
   -- Theme
-  {'dracula/vim', as = "dracula"};
+  {'dracula/vim', as = 'dracula'};
   'vim-airline/vim-airline';
   'vim-airline/vim-airline-themes';
 
@@ -31,6 +31,7 @@ require('paq') {
   -- telescope
   'nvim-lua/plenary.nvim';
   'nvim-telescope/telescope.nvim';
+  {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' };
 
   -- Language support and niceties.
   'sheerun/vim-polyglot';
