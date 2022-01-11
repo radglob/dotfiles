@@ -1,7 +1,6 @@
 local o = vim.opt
 local g = vim.g
 local cmd = vim.cmd
-
 -- Global editor configs.
 o.autoindent = true
 o.background = 'light'
@@ -13,8 +12,8 @@ o.hlsearch = true
 o.ignorecase = true
 o.incsearch = true
 o.laststatus = 2
-o.listchars.tab = '▶'
-o.listchars.trail = '·'
+o.list = true
+o.listchars = { space = '·' }
 o.modeline = true
 o.number = true
 o.shiftwidth = 2
