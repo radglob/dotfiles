@@ -1,5 +1,7 @@
 local lsp = require('lspconfig')
+local mapping = require('cmp.config.mapping')
 local cmp = require('cmp')
+local types = require('cmp.types')
 local cmp_lsp = require('cmp_nvim_lsp')
 
 cmp.setup({
@@ -9,10 +11,10 @@ cmp.setup({
     end,
   },
   mapping = {
-    ['<C-n>'] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
-    ['<C-p>'] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
-    ['<Down>'] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select }),
-    ['<Up>'] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select }),
+    ['<C-n>'] = cmp.mapping.select_next_item(),
+    ['<C-p>'] = cmp.mapping.select_prev_item(),
+    ['<Down>'] = cmp.mapping.select_next_item(),
+    ['<Up>'] = cmp.mapping.select_prev_item(),
     ['<C-b>'] = cmp.mapping.scroll_docs(-4),
     ['<C-f>'] = cmp.mapping.scroll_docs(4),
     ['<C-Space>'] = cmp.mapping.complete(),
@@ -54,9 +56,11 @@ lsp.html.setup {
   capabilities = capabilities
 }
 
-lsp.cssls.setup = {
+lsp.cssls.setup {
   capabilities = capabilities
 }
+
+lsp.hls.setup{}
 
 map('n', '<leader>,', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>')
 map('n', '<leader>;', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>')
