@@ -15,6 +15,7 @@ o.laststatus = 2
 o.list = true
 o.listchars = { space = '·' }
 o.modeline = true
+o.relativenumber = true
 o.number = true
 o.shiftwidth = 2
 o.scrolloff = 8
