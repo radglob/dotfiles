@@ -36,7 +36,7 @@ capabilities.textDocument.completion.completionItem.snippetSupport = true
 capabilities = cmp_lsp.update_capabilities(capabilities)
 
 lsp.elixirls.setup {
-  cmd = {"/home/jln/bin/elixir-ls/language_server.sh"},
+  cmd = {"$HOME/bin/elixir-ls/language_server.sh"},
   capabilities = capabilities,
   on_attach = on_attach,
   settings = {
