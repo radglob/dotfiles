@@ -25,8 +25,9 @@ require('paq') {
   'hrsh7th/vim-vsnip';
 
   -- LSP
+  'williamboman/nvim-lsp-installer';
   'neovim/nvim-lspconfig';
-  'nvim-treesitter/nvim-treesitter';
+  {'nvim-treesitter/nvim-treesitter', run = 'TSUpdate' };
 
   -- telescope
   'nvim-lua/plenary.nvim';
@@ -52,4 +53,4 @@ require('mappings')
 require('treesitter')
 require('lsp')
 require('telescope-setup')
-
+require('autocmds')

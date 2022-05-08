@@ -1,4 +1,5 @@
 local lsp = require('lspconfig')
+local lsp_installer = require('nvim-lsp-installer')
 local mapping = require('cmp.config.mapping')
 local cmp = require('cmp')
 local types = require('cmp.types')
@@ -46,6 +47,8 @@ lsp.elixirls.setup {
   }
 }
 
+lsp_installer.setup{}
+
 -- Having issues with Rubocop or whatever with a Rails app (or something else using bundler?
 -- Check ~/.cache/nvim/lsp.log and use `specific_install` to add any gems you might need.
 lsp.solargraph.setup {
@@ -60,7 +63,13 @@ lsp.cssls.setup {
   capabilities = capabilities
 }
 
+lsp.tsserver.setup{}
+
 lsp.hls.setup{}
+
+lsp.tailwindcss.setup{}
+
+lsp.prismals.setup{}
 
 map('n', '<leader>,', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>')
 map('n', '<leader>;', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>')
