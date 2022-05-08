@@ -27,6 +27,7 @@ require('paq') {
   -- LSP
   'williamboman/nvim-lsp-installer';
   'neovim/nvim-lspconfig';
+  'jose-elias-alvarez/null-ls.nvim';
   {'nvim-treesitter/nvim-treesitter', run = 'TSUpdate' };
 
   -- telescope

@@ -4,6 +4,7 @@ local mapping = require('cmp.config.mapping')
 local cmp = require('cmp')
 local types = require('cmp.types')
 local cmp_lsp = require('cmp_nvim_lsp')
+local null_ls = require('null-ls')
 
 cmp.setup({
   snippet = {
@@ -70,6 +71,15 @@ lsp.hls.setup{}
 lsp.tailwindcss.setup{}
 
 lsp.prismals.setup{}
+
+null_ls.setup {
+  sources = {
+    null_ls.builtins.diagnostics.eslint,
+    null_ls.builtins.code_actions.eslint,
+    null_ls.builtins.formatting.prettier
+  },
+  on_attach = on_attach
+}
 
 map('n', '<leader>,', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>')
 map('n', '<leader>;', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>')
