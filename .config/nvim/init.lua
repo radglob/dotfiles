@@ -41,6 +41,7 @@ require('paq') {
   'tpope/vim-fugitive';
   'tpope/vim-rails';
   'tpope/vim-surround';
+  'pantharshit00/vim-prisma';
 }
 
 function map(mode, lhs, rhs, opts)
@@ -51,7 +52,7 @@ end
 
 require('settings')
 require('mappings')
-require('treesitter')
+-- require('treesitter')
 require('lsp')
 require('telescope-setup')
 require('autocmds')
