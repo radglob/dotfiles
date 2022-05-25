@@ -37,8 +37,11 @@ local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 capabilities = cmp_lsp.update_capabilities(capabilities)
 
+local homedir = os.getenv("HOME")
+local cmd = { homedir .. "/.local/share/nvim/lsp_servers/elixirls" }
+
 lsp.elixirls.setup {
-  cmd = {"$HOME/bin/elixir-ls/language_server.sh"},
+  cmd = cmd,
   capabilities = capabilities,
   on_attach = on_attach,
   settings = {
@@ -71,6 +74,8 @@ lsp.hls.setup{}
 lsp.tailwindcss.setup{}
 
 lsp.prismals.setup{}
+
+lsp.rust_analyzer.setup{}
 
 null_ls.setup {
   sources = {
