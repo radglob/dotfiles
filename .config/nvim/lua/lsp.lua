@@ -38,7 +38,7 @@ capabilities.textDocument.completion.completionItem.snippetSupport = true
 capabilities = cmp_lsp.update_capabilities(capabilities)
 
 local homedir = os.getenv("HOME")
-local cmd = { homedir .. "/.local/share/nvim/lsp_servers/elixirls" }
+local cmd = { homedir .. "/.local/share/nvim/lsp_servers/elixirls/elixir-ls/language_server.sh" }
 
 lsp.elixirls.setup {
   cmd = cmd,
