@@ -21,6 +21,7 @@ map('', '<leader>fg', [[<cmd>lua require('telescope.builtin').live_grep()<cr>]])
 map('', '<leader>fv', [[<cmd>lua require('telescope.builtin').git_files()<cr>]])
 map('', '<leader>fb', [[<cmd>lua require('telescope.builtin').buffers()<cr>]])
 map('', '<leader>fs', [[<cmd>lua require('telescope.builtin').grep_string()<cr>]])
+map('', '<leader>jl', [[<cmd>lua require('telescope.builtin').jumplist()<cr>]])
 map('', '<leader>x', ':!open %<cr>')
 
 -- Escape terminal mode
