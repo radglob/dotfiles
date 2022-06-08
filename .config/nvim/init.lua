@@ -32,7 +32,7 @@ require('paq') {
 
   -- telescope
   'nvim-lua/plenary.nvim';
-  'radglob/telescope.nvim';
+  {'nvim-telescope/telescope.nvim', branch = 'dev' };
   {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' };
   'kyazdani42/nvim-web-devicons';
 
@@ -42,7 +42,6 @@ require('paq') {
   'tpope/vim-fugitive';
   'tpope/vim-rails';
   'tpope/vim-surround';
-  'pantharshit00/vim-prisma';
 }
 
 function map(mode, lhs, rhs, opts)
