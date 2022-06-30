@@ -63,17 +63,22 @@ lsp.html.setup {
   capabilities = capabilities
 }
 
-lsp.cssls.setup {
-  capabilities = capabilities
-}
-
 lsp.tsserver.setup{}
 
 lsp.hls.setup{}
 
-lsp.tailwindcss.setup{}
-
-lsp.prismals.setup{}
+lsp.tailwindcss.setup {
+  settings = {
+    tailwindCSS = {
+      experimental = {
+        classRegex = {
+          "\\bclass:\\s*'([^']*)'",
+          "\\bclass:\\s*\"([^\"]*)\""
+        }
+      }
+    }
+  }
+}
 
 lsp.rust_analyzer.setup{}
 
