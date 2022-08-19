@@ -128,6 +128,12 @@ then
   alias pbcopy="xclip -sel clip"
 fi;
 
+if command -v direnv &> /dev/null
+then
+  eval "$(direnv hook zsh)"
+fi;
+
+
 [ -d "$HOME/.nix-profile" ] && . $HOME/.nix-profile/etc/profile.d/nix.sh
 
 export POWERLINE_ROOT="$HOME/.local/lib/python3.9/site-packages/powerline"

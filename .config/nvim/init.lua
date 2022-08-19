@@ -32,7 +32,7 @@ require('paq') {
 
   -- telescope
   'nvim-lua/plenary.nvim';
-  {'nvim-telescope/telescope.nvim', branch = 'dev' };
+  'nvim-telescope/telescope.nvim';
   {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' };
   'kyazdani42/nvim-web-devicons';
 
@@ -52,7 +52,7 @@ end
 
 require('settings')
 require('mappings')
--- require('treesitter')
+require('treesitter')
 require('lsp')
 require('telescope-setup')
 require('autocmds')
