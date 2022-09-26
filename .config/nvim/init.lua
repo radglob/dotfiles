@@ -9,7 +9,7 @@ require('paq') {
   'savq/paq-nvim';
 
   -- Theme
-  {'dracula/vim', as = 'dracula'};
+  'savq/melange';
   'vim-airline/vim-airline';
   'vim-airline/vim-airline-themes';
 

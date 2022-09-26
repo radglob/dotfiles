@@ -135,6 +135,7 @@ fi;
 
 export POWERLINE_ROOT="$HOME/.local/lib/python3.9/site-packages/powerline"
 
+<<<<<<< HEAD
 if command -v cargo &> /dev/null
 then
   export PATH="$PATH:$HOME/.cargo/bin"
@@ -145,4 +146,12 @@ if [[ "$ASDF_RUST" =~ "No such version" ]]; then
 else
   ASDF_RUST_VERSION=$(asdf current rust | tr -s '[:space:]' | awk '{print $1"/"$2}')
   export PATH="$PATH:$HOME/.asdf/installs/$ASDF_RUST_VERSION/bin"
+fi
+
+# Set kitty theme based off time of day, mimicking what neovim is doing.
+current_hour=`date +%H`
+if (( $current_hour >= 18 )); then
+  kitty +kitten themes --reload-in=all Melange Dark
+else
+  kitty +kitten themes --reload-in=all Melange Light
 fi
