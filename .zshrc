@@ -134,8 +134,6 @@ then
 fi;
 
 export POWERLINE_ROOT="$HOME/.local/lib/python3.9/site-packages/powerline"
-
-<<<<<<< HEAD
 if command -v cargo &> /dev/null
 then
   export PATH="$PATH:$HOME/.cargo/bin"
