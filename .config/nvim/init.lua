@@ -52,7 +52,7 @@ end
 
 require('settings')
 require('mappings')
-require('treesitter')
+-- require('treesitter')
 require('lsp')
 require('telescope-setup')
 require('autocmds')
