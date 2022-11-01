@@ -139,10 +139,3 @@ if command -v cargo &> /dev/null
 then
   export PATH="$PATH:$HOME/.cargo/bin"
 fi;
-
-ASDF_RUST=$(asdf current | grep rust)
-if [[ "$ASDF_RUST" -eq "" ]]; then
-else
-  ASDF_RUST_VERSION=$(asdf current rust | tr -s '[:space:]' | awk '{print $1"/"$2}')
-  export PATH="$PATH:$HOME/.asdf/installs/$ASDF_RUST_VERSION/bin"
-fi
