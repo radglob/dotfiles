@@ -10,8 +10,7 @@ require('paq') {
 
   -- Theme
   'savq/melange';
-  'vim-airline/vim-airline';
-  'vim-airline/vim-airline-themes';
+  'ojroques/nvim-hardline';
 
   -- nvim-cmp
   'hrsh7th/cmp-buffer';
@@ -50,6 +49,7 @@ function map(mode, lhs, rhs, opts)
   vim.api.nvim_set_keymap(mode, lhs, rhs, options)
 end
 
+require('hardline').setup{}
 require('settings')
 require('mappings')
 -- require('treesitter')

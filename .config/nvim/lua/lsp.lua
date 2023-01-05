@@ -35,7 +35,7 @@ cmp.setup({
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
-capabilities = cmp_lsp.update_capabilities(capabilities)
+capabilities = cmp_lsp.default_capabilities(capabilities)
 
 local homedir = os.getenv("HOME")
 local cmd = { homedir .. "/.local/share/nvim/lsp_servers/elixirls/elixir-ls/language_server.sh" }
