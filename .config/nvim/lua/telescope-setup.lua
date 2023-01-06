@@ -4,7 +4,8 @@ require('telescope').setup {
   },
   pickers = {
     find_files = {
-      no_ignore_parent = true
+      no_ignore_parent = true,
+      find_command = { "rg", "--files", "--hidden", "--glob", "!**/.git/*", "--glob", "!**/snapshots/*" }
     },
     live_grep = {
       additional_args = function(opts)
