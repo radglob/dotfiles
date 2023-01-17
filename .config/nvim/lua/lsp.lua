@@ -91,11 +91,11 @@ null_ls.setup {
   on_attach = on_attach
 }
 
-map('n', '<leader>,', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>')
-map('n', '<leader>;', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>')
+map('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<CR>')
+map('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<CR>')
 map('n', '<leader>a', '<cmd>lua vim.lsp.buf.code_action()<CR>')
 map('n', '<leader>d', '<cmd>lua vim.lsp.buf.definition()<CR>')
-map('n', '<leader>f', '<cmd>lua vim.lsp.buf.formatting()<CR>')
+map('n', '<leader>f', '<cmd>lua vim.lsp.buf.format { async = true }<CR>')
 map('n', '<leader>h', '<cmd>lua vim.lsp.buf.hover()<CR>')
 map('n', '<leader>m', '<cmd>lua vim.lsp.buf.rename()<CR>')
 map('n', '<leader>r', '<cmd>lua vim.lsp.buf.references()<CR>')
