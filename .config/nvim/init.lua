@@ -33,6 +33,8 @@ require('paq') {
   'nvim-lua/plenary.nvim';
   'nvim-telescope/telescope.nvim';
   {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' };
+  {'nvim-telescope/telescope-file-browser.nvim', requires = { 'nvim-telescope/telescope.nvim', 'nvim-lua/plenary.nvim' } };
+
   'kyazdani42/nvim-web-devicons';
 
   -- Language support and niceties.
