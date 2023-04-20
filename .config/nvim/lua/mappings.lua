@@ -10,7 +10,7 @@ map('n', '<C-L>', '<C-W><C-L>')
 
 -- Configuration
 map('n', '<leader>ve', ':edit ~/.config/nvim/init.lua<cr>')
-map('n', '<leader>vr', ':luafile ~/.config/nvim/init.lua<cr>') 
+map('n', '<leader>vr', ':luafile ~/.config/nvim/init.lua<cr>')
 
 -- Clear all buffers.
 map('n', '<leader>Q', ':bufdo bdelete<cr>')
@@ -20,6 +20,7 @@ map('', '<leader>ff', [[<cmd>lua require('telescope.builtin').find_files()<cr>]]
 map('', '<leader>fg', [[<cmd>lua require('telescope.builtin').live_grep()<cr>]])
 map('', '<leader>fv', [[<cmd>lua require('telescope.builtin').git_files()<cr>]])
 map('', '<leader>fb', [[<cmd>Telescope file_browser<cr>]])
+map('', '<leader>fc', [[<cmd>Telescope file_browser path=%:p:h select_buffer="true"<cr>]])
 map('', '<leader>fs', [[<cmd>lua require('telescope.builtin').grep_string()<cr>]])
 map('', '<leader>jl', [[<cmd>lua require('telescope.builtin').jumplist()<cr>]])
 map('', '<leader>x', ':!open %<cr>')
