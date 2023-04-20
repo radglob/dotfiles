@@ -1,9 +1,11 @@
 if vim.fn.has "nvim-0.7" then
   local api = vim.api
 
-  -- Set filetype for prisma
+  -- Set filetype for gdscript
   api.nvim_create_autocmd(
     { "BufNewFile", "BufRead" },
-    { pattern = "*.prisma", command = "set filetype=prisma" }
+    { pattern = "*.gd", command = "set filetype=gdscript" }
   )
+
+  
 end

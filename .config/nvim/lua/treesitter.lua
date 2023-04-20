@@ -1,6 +1,6 @@
 local ts = require('nvim-treesitter.configs')
 ts.setup { 
-  ensure_installed = { 'ruby', 'elixir', 'heex', 'haskell', 'javascript', 'css', 'typescript', 'tsx' }, 
+  ensure_installed = { 'ruby', 'elixir', 'eex', 'heex', 'javascript', 'css', 'typescript', 'tsx', 'gdscript' }, 
   highlight = { enable = true },
   indent = { enable = true }
 }
