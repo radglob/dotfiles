@@ -14,7 +14,7 @@ o.ignorecase = true
 o.incsearch = true
 o.laststatus = 2
 o.list = true
-o.listchars = { space = '·', tab = '> ' }
+o.listchars = { trail = '·', tab = '> ' }
 o.modeline = true
 o.number = true
 o.relativenumber = true
