@@ -95,6 +95,8 @@ lsp.gopls.setup {}
 
 lsp.gdscript.setup {}
 
+lsp.pylsp.setup {}
+
 map('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<CR>')
 map('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<CR>')
 map('n', '<leader>a', '<cmd>lua vim.lsp.buf.code_action()<CR>')

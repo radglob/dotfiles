@@ -27,7 +27,7 @@ require('paq') {
   'williamboman/nvim-lsp-installer';
   'neovim/nvim-lspconfig';
   'jose-elias-alvarez/null-ls.nvim';
-  {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' };
+  {'nvim-treesitter/nvim-treesitter', run = function() cmd 'TSUpdate' end };
 
   -- telescope
   'nvim-lua/plenary.nvim';
@@ -54,7 +54,7 @@ end
 require('hardline').setup{}
 require('settings')
 require('mappings')
-require('treesitter')
+-- require('treesitter')
 require('lsp')
 require('telescope-setup')
 require('autocmds')
