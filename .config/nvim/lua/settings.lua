@@ -4,7 +4,7 @@ local cmd = vim.cmd
 -- Global editor configs.
 g.airline_powerline_fonts = 1
 o.autoindent = true
-o.background = 'light'
+o.background = 'dark'
 o.cursorline = false
 o.expandtab = true
 o.foldenable = false
