@@ -1,5 +1,6 @@
 local lsp = require('lspconfig')
-local lsp_installer = require('nvim-lsp-installer')
+local mason = require('mason')
+local mason_lspconfig = require('mason-lspconfig')
 local mapping = require('cmp.config.mapping')
 local cmp = require('cmp')
 local types = require('cmp.types')
@@ -37,67 +38,13 @@ local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 capabilities = cmp_lsp.default_capabilities(capabilities)
 
-local homedir = os.getenv("HOME")
-local cmd = { homedir .. "/.local/share/nvim/lsp_servers/elixirls/elixir-ls/language_server.sh" }
-
-lsp.elixirls.setup {
-  cmd = cmd,
-  capabilities = capabilities,
-  on_attach = on_attach,
-  settings = {
-    elixirLS = {
-      fetchDeps = false
-    }
-  }
+mason.setup{}
+mason_lspconfig.setup{}
+mason_lspconfig.setup_handlers{
+  function(server_name)
+    lsp[server_name].setup{}
+  end
 }
-
-lsp_installer.setup{}
-
--- Having issues with Rubocop or whatever with a Rails app (or something else using bundler?
--- Check ~/.cache/nvim/lsp.log and use `specific_install` to add any gems you might need.
-lsp.solargraph.setup {
-  cmd = { "solargraph", "stdio" }
-}
-
-lsp.html.setup {
-  capabilities = capabilities
-}
-
-lsp.tsserver.setup{}
-
-lsp.hls.setup{}
-
-lsp.tailwindcss.setup {
-  settings = {
-    tailwindCSS = {
-      experimental = {
-        classRegex = {
-          "\\bclass:\\s*'([^']*)'",
-          "\\bclass:\\s*\"([^\"]*)\""
-        }
-      }
-    }
-  }
-}
-
-lsp.rust_analyzer.setup{}
-
-null_ls.setup {
-  sources = {
-    null_ls.builtins.diagnostics.eslint,
-    null_ls.builtins.code_actions.eslint,
-    null_ls.builtins.formatting.prettier
-  },
-  on_attach = on_attach
-}
-
-lsp.gopls.setup {}
-
-lsp.gdscript.setup {}
-
-lsp.pylsp.setup {}
-
-lsp.ccls.setup {}
 
 map('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<CR>')
 map('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<CR>')

@@ -24,7 +24,8 @@ require('paq') {
   'hrsh7th/vim-vsnip';
 
   -- LSP
-  'williamboman/nvim-lsp-installer';
+  { 'williamboman/mason.nvim', run = function() cmd 'MasonUpdate' end };
+  'williamboman/mason-lspconfig.nvim';
   'neovim/nvim-lspconfig';
   'jose-elias-alvarez/null-ls.nvim';
   {'nvim-treesitter/nvim-treesitter', run = function() cmd 'TSUpdate' end };
@@ -57,4 +58,3 @@ require('mappings')
 -- require('treesitter')
 require('lsp')
 require('telescope-setup')
-require('autocmds')
