@@ -111,6 +111,10 @@ then
   alias open=xdg-open
 fi
 
+if [ `uname -s` = "Linux" ]; then
+  export PATH="/opt/nvim/bin:$PATH"
+fi
+
 # If neovim is installed, use neovim as vim.
 if command -v nvim &> /dev/null
 then
