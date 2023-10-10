@@ -137,7 +137,8 @@ then
   eval "$(direnv hook zsh)"
 fi;
 
-export POWERLINE_ROOT="$HOME/.local/lib/python3.9/site-packages/powerline"
+export ASDF_PYTHON_MAJOR_VERSION=`asdf current python | awk '{ match($0, /[0-9]+\.[0-9]+/); print substr($0, RSTART, RLENGTH); }'`
+export POWERLINE_ROOT="$HOME/.local/lib/python$ASDF_PYTHON_MAJOR_VERSION/site-packages/powerline"
 
 if command -v cargo &> /dev/null
 then
