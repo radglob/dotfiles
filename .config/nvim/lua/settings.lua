@@ -1,6 +1,7 @@
 local o = vim.opt
 local g = vim.g
 local cmd = vim.cmd
+
 -- Global editor configs.
 g.airline_powerline_fonts = 1
 o.autoindent = true

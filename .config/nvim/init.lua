@@ -30,17 +30,16 @@ require('paq') {
   'jose-elias-alvarez/null-ls.nvim';
   {'nvim-treesitter/nvim-treesitter', run = function() cmd 'TSUpdate' end };
 
-  -- telescope
-  'nvim-lua/plenary.nvim';
-  'nvim-telescope/telescope.nvim';
-  {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' };
-  {'nvim-telescope/telescope-file-browser.nvim', requires = { 'nvim-telescope/telescope.nvim', 'nvim-lua/plenary.nvim' } };
+  -- fzf (telescope is too slow :( )
+  {'junegunn/fzf', run = 'fzf#install()' };
+  'junegunn/fzf.vim';
 
   'kyazdani42/nvim-web-devicons';
 
   -- Language support and niceties.
   'sheerun/vim-polyglot';
   'tpope/vim-commentary';
+  'tpope/vim-abolish';
   'tpope/vim-fugitive';
   'tpope/vim-rails';
   'tpope/vim-surround';
@@ -55,6 +54,5 @@ end
 require('hardline').setup{}
 require('settings')
 require('mappings')
--- require('treesitter')
+require('treesitter')
 require('lsp')
-require('telescope-setup')
