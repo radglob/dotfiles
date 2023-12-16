@@ -24,14 +24,14 @@ require('paq') {
   'hrsh7th/vim-vsnip';
 
   -- LSP
-  { 'williamboman/mason.nvim', run = function() cmd 'MasonUpdate' end };
+  { 'williamboman/mason.nvim', build = function() cmd 'MasonUpdate' end };
   'williamboman/mason-lspconfig.nvim';
   'neovim/nvim-lspconfig';
   'jose-elias-alvarez/null-ls.nvim';
-  {'nvim-treesitter/nvim-treesitter', run = function() cmd 'TSUpdate' end };
+  {'nvim-treesitter/nvim-treesitter', build = function() cmd 'TSUpdate' end };
 
   -- fzf (telescope is too slow :( )
-  {'junegunn/fzf', run = 'fzf#install()' };
+  {'junegunn/fzf', build = 'fzf#install()' };
   'junegunn/fzf.vim';
 
   'kyazdani42/nvim-web-devicons';

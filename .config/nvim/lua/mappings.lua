@@ -1,5 +1,3 @@
-local telescope = require('telescope.builtin')
-
 vim.g.mapleader = " "
 
 -- Buffer navigation
