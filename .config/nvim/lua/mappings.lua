@@ -17,7 +17,8 @@ map('n', '<leader>Q', ':bufdo bdelete<cr>')
 map('', '<leader>ff', ':Files<cr>')
 map('', '<leader>fg', ':Rg<cr>')
 map('', '<leader>fv', ':GFiles<cr>')
+map('', '<leader>fb', ':Buffers<cr>')
 map('', '<leader>x', ':!open %<cr>')
 
 -- Escape terminal mode
-map('t', '<ESC>', '<C-\\><C-N>')
+map('t', '<ESC>', '<C-\\><C-N>:q!<cr>')

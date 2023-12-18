@@ -9,6 +9,7 @@ o.background = 'dark'
 o.cursorline = false
 o.expandtab = true
 o.foldenable = false
+o.foldmethod = 'indent'
 o.hidden = true
 o.hlsearch = true
 o.ignorecase = true

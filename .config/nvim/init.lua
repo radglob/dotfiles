@@ -54,5 +54,5 @@ end
 require('hardline').setup{}
 require('settings')
 require('mappings')
-require('treesitter')
+-- require('treesitter')
 require('lsp')

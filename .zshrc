@@ -144,3 +144,5 @@ if command -v cargo &> /dev/null
 then
   export PATH="$PATH:$HOME/.cargo/bin"
 fi;
+
+source ~/.gusto/init.sh
