@@ -9,7 +9,7 @@ require('paq') {
   'savq/paq-nvim';
 
   -- Theme
-  'savq/melange';
+  'shaunsingh/solarized.nvim';
   'ojroques/nvim-hardline';
 
   -- nvim-cmp
@@ -54,5 +54,5 @@ end
 require('hardline').setup{}
 require('settings')
 require('mappings')
--- require('treesitter')
+require('treesitter')
 require('lsp')
