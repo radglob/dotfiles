@@ -9,7 +9,7 @@ require('paq') {
   'savq/paq-nvim';
 
   -- Theme
-  'savq/melange';
+  'shaunsingh/solarized.nvim';
   'ojroques/nvim-hardline';
 
   -- nvim-cmp

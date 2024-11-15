@@ -5,7 +5,7 @@ local cmd = vim.cmd
 -- Global editor configs.
 g.airline_powerline_fonts = 1
 o.autoindent = true
-o.background = 'dark'
+o.background = 'light'
 o.cursorline = false
 o.expandtab = true
 o.foldenable = false
@@ -30,7 +30,7 @@ o.tabstop = 2
 o.termguicolors = true
 
 cmd("syntax on")
-cmd("colorscheme melange")
+cmd("colorscheme solarized")
 
 stl = require('statusline.line')
 o.statusline = '%!luaeval("stl.statusline()")'
