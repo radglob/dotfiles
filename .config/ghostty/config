@@ -1,0 +1,5 @@
+theme = light:Builtin Solarized Light,dark:Builtin Solarized Dark
+font-family = JetBrainsMono Nerd Font
+font-size = 13
+
+keybind = ctrl+,=toggle_window_decorations
