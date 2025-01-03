@@ -68,7 +68,7 @@ ZSH_THEME="agnoster"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git rails asdf mix)
+plugins=(git rails mise mix)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -101,8 +101,6 @@ source $ZSH/oh-my-zsh.sh
 alias tn="tmux new -s"
 alias t="tmux attach -t"
 alias ssh="TERM=xterm ssh"
-
-. $HOME/.asdf/asdf.sh
 
 export PATH="$PATH:$HOME/bin:$HOME/.local/bin"
 
@@ -137,10 +135,9 @@ then
   eval "$(direnv hook zsh)"
 fi;
 
-export ASDF_PYTHON_MAJOR_VERSION=`asdf current python | awk '{ match($0, /[0-9]+\.[0-9]+/); print substr($0, RSTART, RLENGTH); }'`
-export POWERLINE_ROOT="$HOME/.local/lib/python$ASDF_PYTHON_MAJOR_VERSION/site-packages/powerline"
-
 if command -v cargo &> /dev/null
 then
   export PATH="$PATH:$HOME/.cargo/bin"
 fi;
+
+eval "$(/home/jln/.local/bin/mise activate bash)"

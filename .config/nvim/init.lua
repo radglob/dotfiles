@@ -10,6 +10,7 @@ require('paq') {
 
   -- Theme
   'shaunsingh/solarized.nvim';
+  'vimpostor/vim-lumen';
   'ojroques/nvim-hardline';
 
   -- nvim-cmp
