@@ -1,0 +1,11 @@
+theme = "solarized_light"
+
+[editor]
+line-number = "absolute"
+auto-format = false
+
+[editor.file-picker]
+hidden = true
+
+[editor.lsp]
+display-messages = true

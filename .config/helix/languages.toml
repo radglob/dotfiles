@@ -1,0 +1,35 @@
+[[language]]
+name = "ruby"
+scope = "source.ruby"
+injection-regex = "ruby"
+file-types = [
+  "rb",
+  "rake",
+  "rakefile",
+  "irb",
+  "gemfile",
+  "gemspec",
+  "Rakefile",
+  "Gemfile",
+  "rabl",
+  "jbuilder",
+  "rjs",
+  "rbi",
+  "haml",
+  "Guardfile",
+  "Capfile",
+]
+shebangs = ["ruby"]
+comment-token = "#"
+language-servers = ["solargraph", "standardrb"]
+indent = { tab-width = 2, unit = "  " }
+formatter = { command = "standardrb", args = ["--stdin", "foo.rb", "--fix", "--stderr"]}
+auto-format = true
+
+[language-server.standardrb]
+command = "standardrb"
+args = ["--lsp"]
+
+[[grammar]]
+name = "ruby"
+source = { git = "https://github.com/tree-sitter/tree-sitter-ruby", rev = "71bd32fb7607035768799732addba884a37a6210" }
