@@ -140,4 +140,4 @@ then
   export PATH="$PATH:$HOME/.cargo/bin"
 fi;
 
-eval "$(/home/jln/.local/bin/mise activate bash)"
+eval "$($HOME/.local/bin/mise activate bash)"
