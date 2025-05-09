@@ -109,18 +109,6 @@ then
   alias open=xdg-open
 fi
 
-if [ `uname -s` = "Linux" ]; then
-  export PATH="/opt/nvim/bin:$PATH"
-fi
-
-# If neovim is installed, use neovim as vim.
-if command -v nvim &> /dev/null
-then
-  alias vim=nvim
-fi;
-
-export EDITOR=nvim
-
 export GOPATH="$HOME/.go"
 export FLYCTL_INSTALL="$HOME/.fly"
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$HOME/.radicle/bin:$GOPATH/bin:$FLYCTL_INSTALL/bin:$PATH"
@@ -141,3 +129,6 @@ then
 fi;
 
 eval "$($HOME/.local/bin/mise activate bash)"
+
+# Shopify Hydrogen alias to local projects
+alias h2='$(npm prefix -s)/node_modules/.bin/shopify hydrogen'

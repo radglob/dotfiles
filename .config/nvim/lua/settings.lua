@@ -27,6 +27,7 @@ o.splitbelow = true
 o.splitright = true
 o.tabstop = 2
 o.termguicolors = true
+o.background = 'light'
 
 cmd("syntax on")
 cmd("colorscheme solarized")
