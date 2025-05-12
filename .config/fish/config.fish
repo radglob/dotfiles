@@ -12,4 +12,7 @@ if test -d /opt/homebrew/
     /opt/homebrew/bin/brew shellenv | source
 end
 
-alias vim=nvim
+# Support for local fish config (using this on client laptops)
+if test -e "$HOME/.config/fish/config.local.fish"
+    source "$HOME/.config/fish/config.local.fish"
+end

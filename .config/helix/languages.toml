@@ -21,14 +21,9 @@ file-types = [
 ]
 shebangs = ["ruby"]
 comment-token = "#"
-language-servers = ["solargraph", "standardrb"]
+language-servers = ["solargraph"]
 indent = { tab-width = 2, unit = "  " }
-formatter = { command = "standardrb", args = ["--stdin", "foo.rb", "--fix", "--stderr"]}
 auto-format = true
-
-[language-server.standardrb]
-command = "standardrb"
-args = ["--lsp"]
 
 [[grammar]]
 name = "ruby"
