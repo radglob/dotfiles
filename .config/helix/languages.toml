@@ -21,10 +21,34 @@ file-types = [
 ]
 shebangs = ["ruby"]
 comment-token = "#"
-language-servers = ["solargraph"]
+language-servers = ["ruby-lsp"]
 indent = { tab-width = 2, unit = "  " }
 auto-format = true
+
+[language-server.ruby-lsp]
+command = "ruby-lsp"
+config = { diagnostics = true, formatting = true }
 
 [[grammar]]
 name = "ruby"
 source = { git = "https://github.com/tree-sitter/tree-sitter-ruby", rev = "71bd32fb7607035768799732addba884a37a6210" }
+
+[[language]]
+name = "liquid"
+scope = "source.liquid"
+file-types = [
+  "liquid"
+]
+injection-regex = "^liquid$"
+indent = { tab-width = 2, unit = "  " }
+language-servers = ["shopify-theme-check"]
+block-comment-tokens = { start = "{% comment %}", end = "{% endcomment %}"}
+auto-format = true
+
+[language-server.shopify-theme-check]
+command = "shopify"
+args = ["theme", "language-server"]
+
+[[grammar]]
+name = "liquid"
+source = { git = "https://github.com/hankthetank27/tree-sitter-liquid", rev = "d269f4d52cd08f6cbc6636ee23cc30a9f6c32e42" }
