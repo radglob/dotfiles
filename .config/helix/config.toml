@@ -1,4 +1,6 @@
-theme = "catppuccin_macchiato"
+[theme]
+dark = "catppuccin_macchiato"
+light = "catppuccin_latte"
 
 [editor]
 line-number = "absolute"
